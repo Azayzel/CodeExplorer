@@ -1,4 +1,5 @@
-﻿using GitHubExplorer.Utilities;
+﻿using DAL.Models;
+using GitHubExplorer.Utilities;
 using Microsoft.Win32;
 using Octokit;
 using System;
@@ -20,8 +21,8 @@ namespace GitHubExplorer
         public Form1()
         {
             InitializeComponent();
-           
-                
+
+            metroTabControl1.SelectedIndexChanged += new EventHandler(checkIndex);
             
         }
 
@@ -33,6 +34,31 @@ namespace GitHubExplorer
                 Console.WriteLine("Checking repo: " + repo.FullName);
             }
         }
+
+        private void checkIndex(object sender, EventArgs e)
+        {
+            switch ((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                    // Do nothing, this is main page
+                    break;
+                case 1:
+                    // Search Github Page
+                    break;
+                case 2:
+                    // Company Hub
+
+                    // Get customers to fill Grid
+                    gridPanel.Visible = true;
+                    List<CustomerAndOrder> custAndOrders = DbActions.GetPreviousOrders("30");
+                    orderInfoGrid.DataSource = custAndOrders;
+
+                    break;
+            }
+        }
+
+
+        
 
         /// <summary>
         /// OnLoad Method

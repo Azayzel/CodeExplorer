@@ -32,7 +32,7 @@ namespace GitHubExplorer.Controls
             searchResults = results;
             foreach(var res in searchResults.Items)
             {
-                SearchResultGrid result = new SearchResultGrid { FullName = res.FullName, URL = res.Url, Stars = res.StargazersCount.ToString(), Language = res.Language, OpenIssues = res.OpenIssuesCount.ToString() };
+                SearchResultGrid result = new SearchResultGrid { FullName = res.FullName, URL = new Uri(res.Url), Stars = res.StargazersCount.ToString(), Language = res.Language, OpenIssues = res.OpenIssuesCount.ToString() };
                 gridData.Add(result);
             }
             resultsGrid.DataSource = gridData;

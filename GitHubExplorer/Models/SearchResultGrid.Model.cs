@@ -9,7 +9,7 @@ namespace GitHubExplorer.Models
     public class SearchResultGrid
     {
         public string FullName { get; set; }
-        public string URL { get; set; }
+        public Uri URL { get; set; }
         public string Stars { get; set; }
         public string OpenIssues { get; set; }
         public string Language { get; set; }
